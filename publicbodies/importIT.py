@@ -34,6 +34,9 @@ def convert_data():
             for key in ipa_row.keys():
                 if ipa_row[key] == "null":
                     ipa_row[key] = ""
+                    
+            if ipa_row["tipologia_istat"] == "Istituti di Istruzione Statale di Ogni Ordine e Grado":
+                continue
             
             
             pbo_row = {}
@@ -45,7 +48,7 @@ def convert_data():
             pbo_row["parent"] = ""
             pbo_row["parent_key"] = ""
             pbo_row["description"] = ""
-            pbo_row["url"] = ipa_row["sito_istituzionale"]
+            pbo_row["url"] = ipa_row["sito_istituzionale"].replace(",",".")
             pbo_row["jurisdiction"] = "Italy"
             pbo_row["jurisdiction_code"] = "IT"
             pbo_row["source"] = "Indice delle Pubbliche Amministrazioni"
