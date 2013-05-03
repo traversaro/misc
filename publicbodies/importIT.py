@@ -34,10 +34,16 @@ def convert_data():
             for key in ipa_row.keys():
                 if ipa_row[key] == "null":
                     ipa_row[key] = ""
-                    
+            
+            #preprocessing
             if ipa_row["tipologia_istat"] == "Istituti di Istruzione Statale di Ogni Ordine e Grado":
                 continue
             
+            #cleaning ulrs
+            ipa_row["sito_istituzionale"] = ipa_row["sito_istituzionale"].replace(",",".")
+            if ipa_row["sito_istituzionale"] != "" and ipa_row["sito_istituzionale"][0:7] != "http://":
+                ipa_row["sito_istituzionale"] = "http://" + ipa_row["sito_istituzionale"]
+                
             
             pbo_row = {}
             print("Saving PB " + ipa_row["cod_amm"])
@@ -48,7 +54,7 @@ def convert_data():
             pbo_row["parent"] = ""
             pbo_row["parent_key"] = ""
             pbo_row["description"] = ""
-            pbo_row["url"] = ipa_row["sito_istituzionale"].replace(",",".")
+            pbo_row["url"] = ipa_row["sito_istituzionale"]
             pbo_row["jurisdiction"] = "Italy"
             pbo_row["jurisdiction_code"] = "IT"
             pbo_row["source"] = "Indice delle Pubbliche Amministrazioni"
