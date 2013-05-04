@@ -57,7 +57,7 @@ def convert_data():
             pbo_row["url"] = ipa_row["sito_istituzionale"]
             pbo_row["jurisdiction"] = "Italy"
             pbo_row["jurisdiction_code"] = "IT"
-            pbo_row["source"] = "Indice delle Pubbliche Amministrazioni"
+            pbo_row["source"] = "Directory of italian Public Administrations"
             pbo_row["source_url"] = "http://www.indicepa.gov.it/ricerca/dettaglioamministrazione.php?cod_amm=" + ipa_row["cod_amm"]
             pbo_row["address"] = ipa_row["Indirizzo"].replace(","," ") + " - " + ipa_row["Cap"] + " " + ipa_row["Comune"] + " (" + ipa_row["Provincia"] + ") " + "Italy" 
             pbo_row["contact"] = ""
